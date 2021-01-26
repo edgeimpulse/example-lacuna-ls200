@@ -11,6 +11,10 @@ Only when either bird has been classified with a result greater than `0.8` will 
 The LS200 then adds the `satellite` field and sets it to `true`. This enables us
 to determine which messages pass through the satellite.
 
+__Note__: The `example-lacuna-ls200.ino` sketch contains placeholders for
+intialiasing and sending LoRa messages. Please replace with equivalent
+implementations from your LoRaWAN library.
+
 
 ## Requirements
 

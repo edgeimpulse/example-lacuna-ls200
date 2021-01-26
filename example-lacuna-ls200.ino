@@ -21,7 +21,10 @@
  */
 
 
-#include <SomeLoraSatLibrary.h>
+/*
+ * replace with your LoraWan library
+ */
+//#include <SomeLoraSatLibrary.h>
 
 // Minimal interval between satellite transmissions and number of messages
 #define TX_INTERVAL 3
@@ -64,7 +67,7 @@ void setup() {
   // for you're region
   // EU868, US915 AS923, IN865, ..
   int result = lora_wan_setup(/*some lora wan parameters*/);
-  result = lora_sat_comms_setup(/*some satellite parameters*/)
+  result = lora_sat_comms_setup(/*some satellite parameters*/);
 }
 
 int wait_on_audio_trigger()
@@ -102,9 +105,11 @@ void loop() {
 
     Serial.println("Sending LoRa message");
 
-    // replace with your library function
-    result = lora_wan_send(/* some params & payload */);
-    if (result) { /* error handling */}
+    /*
+     * replace with your library function
+     */
+    //result = lora_wan_send(/* some params & payload */);
+    //if (result) { /* error handling */}
 
     // set `satellite` field to `true`.
     // This way we can discern which messages pass through the satellite.
@@ -112,9 +117,11 @@ void loop() {
 
     Serial.println("Sending LoRa message via satellite");
 
-    // replace with your library function
-    result = lora_sat_send(/* some params & payload */);
-    if (result) { /* error handling */}
+    /*
+     * replace with your library function
+     */
+    //result = lora_sat_send(/* some params & payload */);
+    //if (result) { /* error handling */}
 
   }
 
