@@ -22,11 +22,11 @@ implementations from your LoRaWAN library.
 - Arduino Nano 33 BLE Sense
 - (Optional) The Things Network Indoor Gateway
 
-Get in touch with [Lacuna Space](https://lacuna.space/get-involved/) for hardware and software setup.
+[Get in touch with Lacuna Space](https://lacuna.space/get-involved/) for hardware and software setup.
 
 ## Gettings Started
 
-## Things Network Application and Device
+## The Things Network Application and Device
 
 1. Follow [these steps](https://www.thethingsnetwork.org/docs/applications/add.html) to create a TTN application.
 

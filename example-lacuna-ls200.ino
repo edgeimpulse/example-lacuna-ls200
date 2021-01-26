@@ -41,24 +41,28 @@
 static char rxData[TTN_PACKET_DATA_LEN];
 static int payloadLength;
 
-// Replace with your key
-static byte networkKey[] = { 0x00 } ;
-static byte appKey[] = { 0x00 } ;
-static byte deviceAddress[] = { 0x00 };
+// Replace with your keys and device address
+static byte networkKey[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+static byte appKey[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+static byte deviceAddress[] = { 0x00, 0x00, 0x00, 0x00 };
 
 int lora_wan_setup(/*some lora wan parameters*/);
 int lora_sat_comms_setup(/*some satellite parameters*/);
 
 void setup() {
 
-  //setup some pins (e.g. leds)
+  /*
+   * setup some pins (e.g. leds)
+   */
+  // pinmode(..);
 
   // setup serial comms with off-chip device running ML model
   Serial3.begin(115200);
 
   Serial.begin(115200);
 
-  while (!(Serial && Serial3) && (millis() < 3000));
+  while (!(Serial && Serial3) && (millis() < 3000))
+    ;
 
   Serial.println("Edge Impulse's Simple LoRa (via Satellite) Example\n\n");
   Serial.println("Initializing");
@@ -76,7 +80,7 @@ int wait_on_audio_trigger()
 
     int j = 1;
     while (j < TTN_PACKET_DATA_LEN) {
-      if ((Serial3.available() > 0)){
+      if ((Serial3.available() > 0)) {
         rxData[j++] = Serial3.read();
       }
     }
@@ -87,9 +91,9 @@ int wait_on_audio_trigger()
 void loop() {
   int result;
 
-  // It's probably nice to have some visual indicator
-  // evrey cycle
-  // toggle_leds()
+  // It's probably good to have some visual indicator
+  // every cycle
+  // toggle_leds();
 
   Serial.println("Waiting on audio trigger..");
   payloadLength = wait_on_audio_trigger();
@@ -108,8 +112,8 @@ void loop() {
     /*
      * replace with your library function
      */
-    //result = lora_wan_send(/* some params & payload */);
-    //if (result) { /* error handling */}
+    // result = lora_wan_send(/* some params & payload */);
+    // if (result) { /* error handling */}
 
     // set `satellite` field to `true`.
     // This way we can discern which messages pass through the satellite.
@@ -120,12 +124,11 @@ void loop() {
     /*
      * replace with your library function
      */
-    //result = lora_sat_send(/* some params & payload */);
-    //if (result) { /* error handling */}
-
+    // result = lora_sat_send(/* some params & payload */);
+    // if (result) { /* error handling */}
   }
 
-  // Using `delay()`for this example.
+  // Using `delay()` for this example.
   // But it's better to put the device in lower power state.
   Serial.println("Sleeping..");
   delay(TX_INTERVAL*1000);
